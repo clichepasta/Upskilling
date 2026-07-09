@@ -12,3 +12,13 @@ In reality, Network Partitions (P) are inevitable in distributed systems. Theref
 
 - CP Systems (e.g., Redis, BigTable): Reject writes/reads if they cannot be verified across nodes to ensure data accuracy.
 - AP Systems (e.g., Cassandra, DynamoDB): Accept writes/reads anyway, risking stale data, but keeping the service up.
+
+## Potential Interview Follow-ups
+
+"If you are designing the Uber ride-matching system, do you lean towards CP or AP when updating driver locations?"
+
+Answer: AP. It’s perfectly fine if a rider sees a driver's location 2 seconds out of date (stale data). The system must remain available to accept coordinates.
+
+"What about Uber’s ledger/billing system?"
+
+Answer: CP. We cannot afford double-charging or losing financial records due to network partitions.
